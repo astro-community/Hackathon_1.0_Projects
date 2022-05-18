@@ -1,0 +1,18 @@
+{
+  "name": "astro-hackathon-projects",
+  "version": "1.0.0",
+  "description": "Workspace to allow for the demonstration of the Astro Hackathon Projects that were submitted.",
+  "main": "index.js",
+  "repository": "https://github.com/astro-community/Hackathon_1.0_Projects.git",
+  "author": "Peter Singh <afuzzybear@outlook.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "integrations/*",
+    "ssr/*",
+    "themes/*"
+  ],
+  "dependencies": {
+    "astro": "^1.0.0-beta.29"
+  }
+}
