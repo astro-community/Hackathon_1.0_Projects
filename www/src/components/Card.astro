@@ -1,0 +1,13 @@
+---
+import capitalizeWords from "../scripts/capitialiseWords";
+
+    const {data}=Astro.props
+    const gitUser = data.GitHub.split('/')[3]
+---
+<div class="card">
+    <a href={data.GitHub}>
+        <h3 class="project-title">{capitalizeWords(data.Name.replaceAll('-',' '))}</h3>
+        <img loading='lazy' src={`https://github.com/${gitUser}.png`} alt={`${gitUser} github profile picture`}>
+        <p class="project-author">{data.Author}</p>
+    </a>
+</div>
