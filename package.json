@@ -10,7 +10,8 @@
   "workspaces": [
     "integrations/*",
     "ssr/*",
-    "themes/*"
+    "themes/*",
+    "www/*"
   ],
   "dependencies": {
     "astro": "^1.0.0-beta.29"
