@@ -1,6 +1,7 @@
 ---
 import NotionData from '../../data/notion.json'   
 import { Markdown } from 'astro/components';
+import Base from '../../layouts/Base.astro';
 import formatCategoryString from '../../scripts/formatCategoryString';
 import getGitUserName from '../../scripts/getGitUserName';
 import fetchREADMEfromGithub from '../../scripts/fetchREADMEfromGithub';
@@ -25,4 +26,8 @@ const gitUser = getGitUserName(record.GitHub)
 const readme = await fetchREADMEfromGithub(gitUser,record.Name.toLowerCase())
 
 ---
-    <Markdown content={readme}/>
+<Base>
+    <div class="prose container mx-auto px-3">
+        <Markdown content={readme}/>
+    </div>
+</Base>
