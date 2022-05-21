@@ -1,0 +1,20 @@
+/* The integration's default injected base.css file */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: unset;
+}
+
+.prose :where(img):not(:where([class~='not-prose'] *)) {
+  margin-top: unset;
+  margin-bottom: unset;
+}
