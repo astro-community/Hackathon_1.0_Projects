@@ -86,8 +86,16 @@ function absoluteImageURLs({ base }: { base: string }) {
     node.url = new URL(relativeUrl, base).href;
   }
 
+  function htmlVisitor(node) {
+    node.value = node.value.replaceAll(
+      /(?<=src=")(?!https?:\/\/)\/?(.+)(?=")/g,
+      `${base}$1`
+    );
+  }
+
   function transform(tree: Root) {
     visit(tree, 'image', visitor);
+    visit(tree, 'html', htmlVisitor);
   }
 
   return transform;
@@ -101,8 +109,19 @@ function absoluteLinks({ base }: { base: string }) {
     node.url = new URL(relativeUrl, base).href;
   }
 
+  function htmlVisitor(node) {
+    node.value = node.value.replaceAll(
+      /(?<=href=")(?!https?:\/\/)\/?(.+)(?=")/g,
+      `${base}$1`
+    );
+    if (node.value.includes('href')) {
+      console.log(node.value);
+    }
+  }
+
   function transform(tree: Root) {
     visit(tree, 'link', visitor);
+    visit(tree, 'html', htmlVisitor);
   }
 
   return transform;
