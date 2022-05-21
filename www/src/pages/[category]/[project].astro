@@ -3,7 +3,6 @@ import NotionData from '../../data/notion.json'
 import { Markdown } from 'astro/components';
 import Base from '../../layouts/Base.astro';
 import formatCategoryString from '../../scripts/formatCategoryString';
-import getGitUserName from '../../scripts/getGitUserName';
 import fetchREADMEfromGithub from '../../scripts/fetchREADMEfromGithub';
 
 export async function getStaticPaths() {
@@ -22,8 +21,7 @@ export async function getStaticPaths() {
  }
 const {category,project}=Astro.params
 const {record}=Astro.props
-const gitUser = getGitUserName(record.GitHub)
-const readme = await fetchREADMEfromGithub(gitUser,record.Name.toLowerCase())
+const readme = await fetchREADMEfromGithub(record.GitHub)
 
 ---
 <Base>
