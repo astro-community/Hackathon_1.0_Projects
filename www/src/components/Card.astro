@@ -6,10 +6,12 @@ import formatCategoryString from "../scripts/formatCategoryString";
     const gitUser = data.GitHub.split('/')[3]
 
 ---
-<div class="card">
-    <a href={`${formatCategoryString(data.Category)}/${data.Name.toLowerCase()}`}>
-        <h3 class="project-title">{capitalizeWords(data.Name.replaceAll('-',' '))}</h3>
-        <img loading='lazy' src={`https://github.com/${gitUser}.png`} alt={`${gitUser} github profile picture`}>
-        <p class="project-author">{data.Author}</p>
-    </a>
-</div>
+<a class="card p-4 bg-base-100 shadow-xl grid grid-cols-4 grid-rows-2 text-center" href={`${formatCategoryString(data.Category)}/${data.Name.toLowerCase()}`}>
+    <h3 class="project-title text-lg font-bold col-start-2 col-span-3 self-end border-b border-primary px-3 pb-1 whitespace-nowrap text-ellipsis overflow-hidden">{capitalizeWords(data.Name.replaceAll('-',' '))}</h3>
+    <div class="avatar row-span-full place-self-center">
+        <div class="w-20 rounded-full">
+            <img loading='lazy' src={`https://github.com/${gitUser}.png`} alt={`${gitUser} github profile picture`} width="96" height="96">
+        </div>
+    </div>
+    <p class="project-author col-start-2 col-span-3 self-start px-3 pt-1 whitespace-nowrap text-ellipsis overflow-hidden">{data.Author}</p>
+</a>

@@ -14,15 +14,19 @@ console.log(NotionData[0])
 		<meta name="viewport" content="width=device-width" />
 		<title>Astro Hackathon Showcase</title>
 	</head>
-	<body>
-		<h1>Astro Hackathon Showcase</h1>
-		<main>
+	<body class="space-y-12 py-12 lg:py-24">
+		<header class="container mx-auto px-3">
+			<h1 class="text-4xl md:text-5xl">Astro Hackathon Showcase</h1>
+		</header>
+		<main class="space-y-12">
 			<Collection title="Themes">
 				{notionData.filter(item=>item.Category.toLowerCase().includes('theme')).map(data=><Card {data}/>)}
 			</Collection>
+			<div class="divider"></div> 
 			<Collection title="Integrations">
-				{notionData.filter(item=>item.Category.toLowerCase().includes('integrations')).map(data=><Card {data}/>)}
+				{notionData.filter(item=>item.Category.toLowerCase().includes('integration')).map(data=><Card {data}/>)}
 			</Collection>
+			<div class="divider"></div> 
 			<Collection title="SSR">
 				{notionData.filter(item=>item.Category.toLowerCase().includes('ssr')).map(data=><Card {data} />)}
 			</Collection>		
