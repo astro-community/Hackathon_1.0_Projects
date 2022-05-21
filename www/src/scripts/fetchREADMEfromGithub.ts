@@ -30,8 +30,11 @@ export default async function fetchREADMEfromGithub(
   // Remove trailing slash
   if (repoURL.at(-1) === '/') repoURL = repoURL.slice(0, -1);
 
-  const [user, repo] = repoURL.split('/').slice(-2);
-  const url = `https://api.github.com/repos/${user}/${repo}/readme`;
+  const [, user, repo, rest] = repoURL.match(
+    /^https?:\/\/github.com\/([^/]+)\/([^/]+)(.*)/
+  );
+  const dir = rest ? '/' + rest.split('/').slice(3).join('/') : '';
+  const url = `https://api.github.com/repos/${user}/${repo}/readme${dir}`;
 
   const response = await fetch(url, {
     headers: {
@@ -43,7 +46,11 @@ export default async function fetchREADMEfromGithub(
   });
 
   if (response.status >= 400) {
-    console.error(response);
+    console.error(
+      `Failed to fetch README for ${user}/${repo}\nError:`,
+      response.status,
+      response.statusText
+    );
     return 'No README found!';
   }
 
