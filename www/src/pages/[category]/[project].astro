@@ -25,4 +25,6 @@ const gitUser = getGitUserName(record.GitHub)
 const readme = await fetchREADMEfromGithub(gitUser,record.Name.toLowerCase())
 
 ---
-    <Markdown content={readme}/>
+    <div class="prose">
+        <Markdown content={readme}/>
+    </div>
