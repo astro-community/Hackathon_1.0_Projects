@@ -114,9 +114,6 @@ function absoluteLinks({ base }: { base: string }) {
       /(?<=href=")(?!https?:\/\/)\/?(.+)(?=")/g,
       `${base}$1`
     );
-    if (node.value.includes('href')) {
-      console.log(node.value);
-    }
   }
 
   function transform(tree: Root) {
