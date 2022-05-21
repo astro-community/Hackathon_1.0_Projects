@@ -1,6 +1,7 @@
 ---
 import notionData from '../data/notion.json'
 import Card from '../components/Card.astro';
+import Collection from '../components/Collection.astro';
 import capitalizeWords from "../scripts/capitialiseWords";
 import formatCategoryString from '../scripts/formatCategoryString';
 import NotionData from '../data/notion.json'
@@ -16,44 +17,15 @@ console.log(NotionData[0])
 	<body>
 		<h1>Astro Hackathon Showcase</h1>
 		<main>
-			<div class="container">
-				<h2>
-					Themes
-				</h2>
-				{notionData.filter(item=>item.Category.toLowerCase().includes('theme')).map(item=><Card data={item}/>)}
-			</div>
-			<div class="container">
-				<h2>
-					Integrations
-				</h2>
-				{notionData.filter(item=>item.Category.toLowerCase().includes('integrations')).map(item=>{
-				const user = item.GitHub.split('/')[3]
-				return(
-					<div>
-						<a href={item.GitHub}>
-							<h3 class="project-title">{capitalizeWords(item.Name.replaceAll('-',' '))}</h3>
-							<img loading='lazy' src={`https://github.com/${user}.png`} alt={`${user} github profile picture`}>
-							<p class="project-author">{item.Author}</p>
-						</a>
-					</div>
-				)})}
-			</div>
-			<div class="container">
-				<h2>
-					SSR
-				</h2>
-				{notionData.filter(item=>item.Category.toLowerCase().includes('ssr')).map(item=>{
-				const user = item.GitHub.split('/')[3]
-				return(
-					<div>
-						<a href={item.GitHub}>
-							<h3 class="project-title">{capitalizeWords(item.Name.replaceAll('-',' '))}</h3>
-							<img loading='lazy' src={`https://github.com/${user}.png`} alt={`${user} github profile picture`}>
-							<p class="project-author">{item.Author}</p>
-						</a>
-					</div>
-				)})}
-			</div>		
+			<Collection title="Themes">
+				{notionData.filter(item=>item.Category.toLowerCase().includes('theme')).map(data=><Card {data}/>)}
+			</Collection>
+			<Collection title="Integrations">
+				{notionData.filter(item=>item.Category.toLowerCase().includes('integrations')).map(data=><Card {data}/>)}
+			</Collection>
+			<Collection title="SSR">
+				{notionData.filter(item=>item.Category.toLowerCase().includes('ssr')).map(data=><Card {data} />)}
+			</Collection>		
 		</main>
 	</body>
 </html>
