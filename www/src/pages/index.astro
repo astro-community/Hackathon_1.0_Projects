@@ -19,6 +19,6 @@ console.log(NotionData[0])
 	</Collection>
 	<div class="divider"></div> 
 	<Collection title="SSR">
-		{notionData.filter(item=>item.Category.toLowerCase().includes('ssr')).map(data=>(data.Author.includes('dummy')? <div/> : <Card {data} />))}
+		{notionData.filter(item=>item.Category.toLowerCase().includes('ssr')).map(data=><Card {data} />)}
 	</Collection>		
 </Base>
