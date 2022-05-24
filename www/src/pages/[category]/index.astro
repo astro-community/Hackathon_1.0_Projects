@@ -1,24 +1,20 @@
 ---
-import Card from '../components/Card.astro';
-import Collection from '../components/Collection.astro';
-import NotionData from '../data/notion.json'
-import Base from '../layouts/Base.astro';
-import formatCategoryString from '../scripts/formatCategoryString';
+import Card from '../../components/Card.astro';
+import Collection from '../../components/Collection.astro';
+import NotionData from '../../data/notion.json'
+import Base from '../../layouts/Base.astro';
+import formatCategoryString from '../../scripts/formatCategoryString';
 
 export async function getStaticPaths() {
     return NotionData.map(record => {
         const category = formatCategoryString(record.Category)
         return {
-            params: {
-                LandingPage: category,
-            },
-            props: {
-                record
-            }
-        }
-    })
+            params: { category },
+            props: { record },
+        };
+    });
 }
-const {LandingPage:category} = Astro.params
+const { category } = Astro.params;
 ---
 <Base>
 	<Collection title={`${(category.toUpperCase())}`}>
