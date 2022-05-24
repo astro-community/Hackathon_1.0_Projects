@@ -15,10 +15,15 @@ const siteName = 'Astro Hackathon Showcase'
 		<meta name="viewport" content="width=device-width" />
 		<title>{title} 🚀 {siteName}</title>
 	</head>
-	<body class="space-y-12 py-12 lg:py-24">
-    <header class="container mx-auto px-3 text-center text-4xl">
-		  <AstroLogo size="60"/> Astro Hackathon Showcase
+	<body class="space-y-12 py-6 lg:py-12">
+    <header class="container mx-auto px-3 text-center text-2xl lg:text-3xl lg:font-light">
+		  Astro Hackathon Showcase
 	  </header>
+		<div class="divider">
+			<span class="inline-block rounded-full p-3 bg-neutral-focus dark:bg-transparent">
+				<AstroLogo size="40" />
+			</span>
+		</div>
 	  <main class="space-y-12">
       <slot/>
     </main>
