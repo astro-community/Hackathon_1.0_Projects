@@ -608,7 +608,7 @@
       "Demo Repo": "No",
       "Demo Script": "No",
       "Demo Video": "No",
-      "Description": "The GitHub page is a monorepo, and the root-level README file gives an overview of several packages and their statuses.\n• I was unable to build & publish my Demo & Docs apps, as they were blocked by some current issues (I chatted with @aFuzzyBear and @matthew2 about these).\n◦ I used the lazy-portal http://readme.md/ to document the API instead, although I wasn't able to include interactive examples as I would have liked to, due to the limitations of markdown.",
+      "Description": "The GitHub page is a monorepo, and the root-level README file gives an overview of several packages and their statuses.\n\n- I was unable to build & publish my Demo & Docs apps, as they were blocked by some current issues (I chatted with @aFuzzyBear and @matthew2 about these).\n\n- I used the `lazy-portal` README.md to document the API instead, although I wasn't able to include interactive examples as I would have liked to, due to the limitations of markdown.",
       "Discord Handle": "@enteleform",
       "Extra links": "Companion npm packages:\n- https://www.npmjs.com/package/lazy-portal",
       "GitHub": "https://github.com/Enteleform/lazy-portal",
