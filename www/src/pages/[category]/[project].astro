@@ -6,7 +6,7 @@ import formatCategoryString from '../../scripts/formatCategoryString';
 import fetchREADMEfromGithub from '../../scripts/fetchREADMEfromGithub';
 
 export async function getStaticPaths() {
-     return NotionData.map(async(record)=>{
+     return await Promise.all(NotionData.map(async (record)=>{
          const category = formatCategoryString(record.Category) 
          return {
              params:{
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
                  readme: await fetchREADMEfromGithub(record.GitHub)
              }
          }
-     })
+     }))
  }
 const {category,project}=Astro.params
 const {record,readme}=Astro.props
