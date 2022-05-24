@@ -582,6 +582,11 @@ ast-types@0.14.2, ast-types@^0.14.2:
   dependencies:
     tslib "^2.0.1"
 
+astro-xelement@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/astro-xelement/-/astro-xelement-3.2.0.tgz#03db9a6ffc215331244f1fc7db25b08cadd6f906"
+  integrity sha512-uzy2z/Yaoz822qXppXawkomc074g3K0+0iGgqOEdwzlOJrj9ne4+BEVh6HWHo5fjEZHy7UcXk5IDGw+pfVaR2w==
+
 astro@^1.0.0-beta.29:
   version "1.0.0-beta.29"
   resolved "https://registry.yarnpkg.com/astro/-/astro-1.0.0-beta.29.tgz#fda49ae4a2682b5c36b14c412fe9dc01fdfa55cf"

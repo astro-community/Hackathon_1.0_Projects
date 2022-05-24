@@ -1,0 +1,26 @@
+---
+import Card from '../../components/Card.astro';
+import Collection from '../../components/Collection.astro';
+import NotionData from '../../data/notion.json'
+import Base from '../../layouts/Base.astro';
+import formatCategoryString from '../../scripts/formatCategoryString';
+
+export async function getStaticPaths() {
+    return NotionData.map(record => {
+        const category = formatCategoryString(record.Category)
+        return {
+            params: { category },
+            props: { record },
+        };
+    });
+}
+const { category } = Astro.params;
+---
+<Base>
+	<Collection title={`${(category.toUpperCase())}`}>
+		{NotionData.filter(item=>item.Category.toLowerCase().includes(category)).map(data=><Card {data}/>)}
+	</Collection>
+    <div class="container text-center mx-auto">
+        <a href="/" class="btn btn-lg">← See all categories</a>
+    </div>
+</Base>

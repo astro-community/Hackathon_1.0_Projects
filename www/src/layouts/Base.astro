@@ -1,4 +1,5 @@
 ---
+import AstroLogo from '../components/AstroLogo.astro';
 import '../styles/base.css';
 
 export interface Props {
@@ -7,15 +8,15 @@ export interface Props {
 
 const { title = 'Astro Hackathon Showcase' } = Astro.props as Props;
 ---
-<html lang="en">
+<html lang="en" class="h-full bg-base-200 bg-gradient-to-br from-base-200 to-base-300 bg-fixed">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>{title}</title>
 	</head>
 	<body class="space-y-12 py-12 lg:py-24">
-    <header class="container mx-auto px-3">
-		  <h1 class="text-4xl md:text-5xl">{title}</h1>
+    <header class="container mx-auto px-3 text-center">
+		  <h1 class="text-4xl"><AstroLogo size="60"/> {title}</h1>
 	  </header>
 	  <main class="space-y-12">
       <slot/>
