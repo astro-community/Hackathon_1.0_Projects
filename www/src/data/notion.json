@@ -428,7 +428,7 @@
       "Demo Repo": "No",
       "Demo Script": "No",
       "Demo Video": "No",
-      "Description": "Buckle up Astronauts 🚀 we're going in together 👩‍🚀👨‍🚀\n\nThis starter kit contains a set of Astro elements, mostly built with Lit, that allow for adding quick multiplayer presence. Live avatars, shared forms, a multiplayer drawing panel, and more. These are all the components you need to display everyone's cursors moving about your screen:\n<LiveblocksRoom room-id=\"my-room\" public-key={key}>\n<LiveCursors />\n</LiveblocksRoom>\n\nThere's some more info about the project on my Twitter:\nhttps://twitter.com/ctnicholasdev/status/1526175957899390977",
+      "Description": "Buckle up Astronauts 🚀 we're going in together 👩‍🚀👨‍🚀\n\nThis starter kit contains a set of Astro elements, mostly built with Lit, that allow for adding quick multiplayer presence. Live avatars, shared forms, a multiplayer drawing panel, and more. These are all the components you need to display everyone's cursors moving about your screen:\n```jsx\n<LiveblocksRoom room-id=\"my-room\" public-key={key}>\n  <LiveCursors />\n</LiveblocksRoom>\n```\n\nThere's some more info about the project on my Twitter:\nhttps://twitter.com/ctnicholasdev/status/1526175957899390977",
       "Discord Handle": "@Chris",
       "Extra links": "Core package on GitHub - https://github.com/CTNicholas/astro-collab",
       "GitHub": "https://github.com/CTNicholas/astro-collaborative-starter",

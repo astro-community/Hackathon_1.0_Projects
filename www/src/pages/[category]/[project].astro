@@ -4,6 +4,8 @@ import { Markdown } from 'astro/components';
 import Base from '../../layouts/Base.astro';
 import formatCategoryString from '../../scripts/formatCategoryString';
 import fetchREADMEfromGithub from '../../scripts/fetchREADMEfromGithub';
+import { slugify } from '../../scripts/slugify';
+import { prettyCategoryName } from '../../scripts/prettyCategoryName';
 
 export async function getStaticPaths() {
      return await Promise.all(NotionData.map(async (record)=>{
@@ -11,7 +13,7 @@ export async function getStaticPaths() {
          return {
              params:{
                  category:category,
-                 project:record.Name.toLowerCase()
+                 project: slugify(record.Name)
              },
              props:{
                  record,
@@ -25,14 +27,38 @@ const {record,readme}=Astro.props
 
 
 ---
-<Base>
-<div class="container mx-auto px-3">
-    <div class="mockup-window prose mx-auto border border-primary bg-primary">
-        <div class="p-4 bg-base-100 text-base-content">
-            <a class="absolute w-full -top-2 left-1/2 -translate-x-1/2 font-bold no-underline text-center" href={record.GitHub + '#readme'}>
-                <h3 class="text-sm text-primary-content">README.md</h3>
-            </a>
-            <Markdown content={readme} />
+<Base title={record.Name}>
+<div class="text-center space-y-2">
+    <h1 class="text-5xl lg:text-6xl font-black">{record.Name}</h1>
+    <p>by <span>{record.Author}</span></p>
+    <p class="flex gap-4 place-content-center">
+        {['GitHub', 'npm', 'Live Preview'].map(e => record[e] && <a href={record[e]} class="font-bold text-primary">{e}</a>)}
+    </p>
+</div>
+<div class="container max-w-7xl mx-auto px-3 grid gap-8 lg:grid-cols-3">
+    <div class="col-span-2">
+        <div class="mockup-window mx-auto border border-primary bg-primary">
+            <div class="p-4 bg-base-100 text-base-content">
+                <a class="absolute w-full top-3.5 left-1/2 -translate-x-1/2 font-bold no-underline text-center" href={record.GitHub + '#readme'}>
+                    <h3 class="text-sm text-primary-content">README.md</h3>
+                </a>
+                <div class="prose mx-auto py-8">
+                    <Markdown content={readme} />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space-y-8">
+            <div class="prose">
+                <h2>Category</h2>
+                <p>{prettyCategoryName(category)}</p>
+            {record.Description && (
+                <h2>Description</h2>
+                <Markdown content={record.Description} />
+            )}
+            </div>
+        <div class="container text-center mx-auto">
+            <a href="." class="btn btn-lg btn-block">← See all submissions</a>
         </div>
     </div>
 </div>

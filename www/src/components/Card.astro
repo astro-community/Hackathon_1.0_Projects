@@ -1,12 +1,13 @@
 ---
 import capitalizeWords from "../scripts/capitialiseWords";
 import formatCategoryString from "../scripts/formatCategoryString";
+import { slugify } from "../scripts/slugify";
 
     const {data}=Astro.props
     const gitUser = data.GitHub.split('/')[3]
 
 ---
-<a class="card p-4 bg-base-100 shadow-xl grid grid-cols-4 grid-rows-2 text-center" href={`${formatCategoryString(data.Category)}/${data.Name.toLowerCase()}`}>
+<a class="card p-4 bg-base-100 shadow-xl grid grid-cols-4 grid-rows-2 text-center" href={`/${formatCategoryString(data.Category)}/${slugify(data.Name)}`}>
     <h3 class="project-title text-lg font-bold col-start-2 col-span-3 self-end border-b border-primary px-3 pb-1 whitespace-nowrap text-ellipsis overflow-hidden">{capitalizeWords(data.Name.replaceAll('-',' '))}</h3>
     <div class="avatar row-span-full place-self-center">
         <div class="w-20 rounded-full">

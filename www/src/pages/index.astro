@@ -1,27 +1,26 @@
 ---
 import notionData from '../data/notion.json'
 import Base from '../layouts/Base.astro';
-import capitalizeWords from '../scripts/capitialiseWords';
-import formatCategoryString from '../scripts/formatCategoryString';
+import { prettyCategoryName } from '../scripts/prettyCategoryName';
 
 const countCategory = (category: string) => notionData.filter(i => i.Category.toLowerCase().includes(category)).length;
 const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category => [category, countCategory(category)]);
 ---
 
-<Base title="Astro Hackathon Showcase">
+<Base>
 	<div class="container max-w-4xl mx-auto p-3 grid sm:grid-cols-2 gap-6 lg:gap-12 2xl:gap-16">
-		{counts.map(([name, count]) =>
-		<div class="card p-4 space-y-4 shadow-xl bg-base-100">
+		{counts.map(([name, count], index) =>
+		<div class={`card p-4 space-y-4 shadow-xl bg-base-100 ${index % 2 && 'sm:translate-y-16'}`}>
 			<div class="flex justify-between items-baseline">
-				<h2 class="font-bold text-xl lg:text-2xl">{name !== 'ssr' ? `${capitalizeWords(name)}s`: name.toUpperCase()}</h2>
+				<h2 class="font-bold text-xl lg:text-2xl">{prettyCategoryName(name)}</h2>
 				<p class="text-sm lg:text-base"><span class="font-bold">{count}</span> Submissions</p>
 			</div>
 			<a href={`/${name}`} class="btn">View Entries</a>
 		</div>
 		)}
-		<div class="card p-4 space-y-4 shadow-xl bg-primary text-primary-content bg-gradient-to-tl from-primary to-secondary">
+		<div class="card p-4 space-y-4 shadow-xl bg-primary text-primary-content bg-gradient-to-tl from-primary to-secondary sm:translate-y-16">
 			<div class="flex justify-between items-baseline">
-				<h2 class="font-bold text-xl lg:text-2xl">Vote</h2>
+				<h2 class="font-bold text-xl lg:text-2xl">🗳️ Vote</h2>
 			</div>
 			<a href="https://astro.build/hack" class="btn btn-accent">Cast your Vote</a>
 		</div>
