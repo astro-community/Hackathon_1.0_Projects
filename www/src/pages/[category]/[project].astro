@@ -35,8 +35,8 @@ const {record,readme}=Astro.props
         {['GitHub', 'npm', 'Live Preview'].map(e => record[e] && <a href={record[e]} class="font-bold text-primary">{e}</a>)}
     </p>
 </div>
-<div class="container max-w-7xl mx-auto px-3 grid gap-8 lg:grid-cols-3">
-    <div class="col-span-2">
+<div class="container max-w-7xl mx-auto px-3 space-y-12 lg:space-y-0 lg:grid lg:gap-8 lg:grid-cols-3">
+    <div class="lg:col-span-2">
         <div class="mockup-window mx-auto border border-primary bg-primary">
             <div class="p-4 bg-base-100 text-base-content">
                 <a class="absolute w-full top-3.5 left-1/2 -translate-x-1/2 font-bold no-underline text-center" href={record.GitHub + '#readme'}>
