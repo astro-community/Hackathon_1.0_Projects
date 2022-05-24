@@ -24,5 +24,7 @@ const {LandingPage:category} = Astro.params
 	<Collection title={`${(category.toUpperCase())}`}>
 		{NotionData.filter(item=>item.Category.toLowerCase().includes(category)).map(data=><Card {data}/>)}
 	</Collection>
-    
+    <div class="container text-center mx-auto">
+        <a href="/" class="btn btn-lg">← See all categories</a>
+    </div>
 </Base>
