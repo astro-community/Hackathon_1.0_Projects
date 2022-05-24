@@ -4,41 +4,24 @@ import Base from '../layouts/Base.astro';
 import capitalizeWords from '../scripts/capitialiseWords';
 import formatCategoryString from '../scripts/formatCategoryString';
 
-const data = ()=>{
-	const setOfCategories = [...new Set(notionData.map((item)=> item.Category ))]
-	let counter = {
-		theme:0,
-		integration:0,
-		ssr:0
-	}
-	setOfCategories.forEach(category=>{
-		if(category.includes('Theme')){
-			counter.theme = notionData.filter(i => i.Category.includes(category)).length
-		} 
-		if(category.includes('SSR')){
-			counter.ssr = notionData.filter(i => i.Category.includes(category)).length
-		} 
-		if(category.includes('Integration')){
-			counter.integration = notionData.filter(i => i.Category.includes(category)).length
-		} 
-	})
-	return counter
-	
-}
-
+const countCategory = (category: string) => notionData.filter(i => i.Category.toLowerCase().includes(category)).length;
+const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category => [category, countCategory(category)]);
 ---
+
 <Base title="Astro Hackathon Showcase">
-   {
-		 Object.entries(data()).map(([name,count])=> 
-			 <h2>{name !== 'ssr' ? `${capitalizeWords(name)}s`: name.toUpperCase()}</h2>
-			 <p><span>{count}</span> Submissions</p>
-			 <a href={`/${name}`}><button>View Entries</button></a>
-		 )
-	 }
-	 <div class="">
-	 	<h2>
-			Vote 
-		</h2>
-			 <a href="https://astro.build/hack"><button>Cast your Vote</button></a>
-	 </div>
+	<div class="container max-w-4xl mx-auto p-3 grid sm:grid-cols-2 gap-6 lg:gap-12 2xl:gap-16">
+		{counts.map(([name, count]) =>
+		<div class="card p-4 space-y-4 shadow-xl bg-base-100">
+			<div class="flex justify-between items-baseline">
+				<h2 class="font-bold text-xl">{name !== 'ssr' ? `${capitalizeWords(name)}s`: name.toUpperCase()}</h2>
+				<p><span>{count}</span> Submissions</p>
+			</div>
+			<a href={`/${name}`} class="btn">View Entries</a>
+		</div>
+		)}
+		<div class="card p-4 space-y-4 shadow-xl bg-primary text-primary-content bg-gradient-to-tl from-primary to-secondary">
+			<h2 class="font-bold text-xl">Vote</h2>
+			<a href="https://astro.build/hack" class="btn btn-accent">Cast your Vote</a>
+		</div>
+	</div>
 </Base>
