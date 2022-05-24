@@ -8,22 +8,20 @@ import { slugify } from '../../scripts/slugify';
 import { prettyCategoryName } from '../../scripts/prettyCategoryName';
 
 export async function getStaticPaths() {
-     return await Promise.all(NotionData.map(async (record)=>{
+     return NotionData.map((record)=>{
          const category = formatCategoryString(record.Category) 
          return {
              params:{
                  category:category,
                  project: slugify(record.Name)
              },
-             props:{
-                 record,
-                 readme: await fetchREADMEfromGithub(record.GitHub)
-             }
+             props:{ record }
          }
-     }))
+     });
  }
 const {category,project}=Astro.params
-const {record,readme}=Astro.props
+const {record}=Astro.props
+const readme = await fetchREADMEfromGithub(record.GitHub)
 
 const icons = {
     GitHub: `<svg
