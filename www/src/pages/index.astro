@@ -8,7 +8,7 @@ const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category 
 ---
 
 <Base>
-	<div class="container max-w-4xl mx-auto p-3 grid sm:grid-cols-2 gap-6 lg:gap-12 2xl:gap-16">
+	<div class="container max-w-4xl mx-auto p-3 grid sm:grid-cols-2 sm:pb-24 gap-6 lg:gap-12 2xl:gap-16">
 		{counts.map(([name, count], index) =>
 		<div class={`card p-4 space-y-4 shadow-xl bg-base-100 ${index % 2 && 'sm:translate-y-16'}`}>
 			<div class="flex justify-between items-baseline">
@@ -23,6 +23,12 @@ const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category 
 				<h2 class="font-bold text-xl lg:text-2xl">🗳️ Vote</h2>
 			</div>
 			<a href="https://astro.build/hack" class="btn btn-accent">Cast your Vote</a>
+		</div>
+	</div>
+	<div class="p-3">
+		<div class="prose max-w-xl mx-auto card p-4 shadow-xl bg-base-100">
+			<p>To celebrate the upcoming release of Astro v1.0.0, the first Astro Hackathon ran from 8 April to 16 May 2022 with public voting ending on 27 May.</p>
+			<p>Find out more at <a href="https://astro.build/hack">astro.build/hack</a></p>
 		</div>
 	</div>
 </Base>
