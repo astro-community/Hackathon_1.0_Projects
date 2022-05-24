@@ -7,7 +7,7 @@ const countCategory = (category: string) => notionData.filter(i => i.Category.to
 const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category => [category, countCategory(category)]);
 ---
 
-<Base title="Astro Hackathon Showcase">
+<Base>
 	<div class="container max-w-4xl mx-auto p-3 grid sm:grid-cols-2 gap-6 lg:gap-12 2xl:gap-16">
 		{counts.map(([name, count]) =>
 		<div class="card p-4 space-y-4 shadow-xl bg-base-100">
