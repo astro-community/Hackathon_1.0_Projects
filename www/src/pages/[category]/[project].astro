@@ -59,7 +59,7 @@ const icons = {
     <h1 class="text-5xl lg:text-6xl font-black dark:text-primary-content">{record.Name}</h1>
     <p>by <span>{record.Author}</span></p>
     <p class="flex gap-8 place-content-center">
-        {['GitHub', 'npm', 'Live Preview'].map(e => record[e] && <a href={record[e]} class="font-bold text-primary inline-flex items-center gap-1"><Fragment set:html={icons[e]} /> {e}</a>)}
+        {['GitHub', 'npm', 'Live Preview'].map(e => record[e] && <a href={record[e]} class="font-bold text-primary dark:text-accent hover:text-secondary inline-flex items-center gap-1"><Fragment set:html={icons[e]} /> {e}</a>)}
     </p>
 </div>
 <div class="container max-w-7xl mx-auto px-3 space-y-12 lg:space-y-0 lg:grid lg:gap-8 lg:grid-cols-3">
