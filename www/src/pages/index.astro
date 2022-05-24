@@ -1,24 +1,44 @@
 ---
 import notionData from '../data/notion.json'
 import Base from '../layouts/Base.astro';
-import Card from '../components/Card.astro';
-import Collection from '../components/Collection.astro';
-import capitalizeWords from "../scripts/capitialiseWords";
+import capitalizeWords from '../scripts/capitialiseWords';
 import formatCategoryString from '../scripts/formatCategoryString';
-import NotionData from '../data/notion.json'
 
-console.log(NotionData[0])
+const data = ()=>{
+	const setOfCategories = [...new Set(notionData.map((item)=> item.Category ))]
+	let counter = {
+		theme:0,
+		integration:0,
+		ssr:0
+	}
+	setOfCategories.forEach(category=>{
+		if(category.includes('Theme')){
+			counter.theme = notionData.filter(i => i.Category.includes(category)).length
+		} 
+		if(category.includes('SSR')){
+			counter.ssr = notionData.filter(i => i.Category.includes(category)).length
+		} 
+		if(category.includes('Integration')){
+			counter.integration = notionData.filter(i => i.Category.includes(category)).length
+		} 
+	})
+	return counter
+	
+}
+
 ---
 <Base title="Astro Hackathon Showcase">
-	<Collection title="Themes">
-		{notionData.filter(item=>item.Category.toLowerCase().includes('theme')).map(data=><Card {data}/>)}
-	</Collection>
-	<div class="divider"></div> 
-	<Collection title="Integrations">
-		{notionData.filter(item=>item.Category.toLowerCase().includes('integration')).map(data=><Card {data}/>)}
-	</Collection>
-	<div class="divider"></div> 
-	<Collection title="SSR">
-		{notionData.filter(item=>item.Category.toLowerCase().includes('ssr')).map(data=>(data.Author.includes('dummy')? <div/> : <Card {data} />))}
-	</Collection>		
+   {
+		 Object.entries(data()).map(([name,count])=> 
+			 <h2>{name !== 'ssr' ? `${capitalizeWords(name)}s`: name.toUpperCase()}</h2>
+			 <p><span>{count}</span> Submissions</p>
+			 <a href={`/${name}`}><button>View Entries</button></a>
+		 )
+	 }
+	 <div class="">
+	 	<h2>
+			Vote 
+		</h2>
+			 <a href="https://astro.build/hack"><button>Cast your Vote</button></a>
+	 </div>
 </Base>
