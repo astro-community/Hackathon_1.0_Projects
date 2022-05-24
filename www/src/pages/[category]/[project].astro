@@ -29,7 +29,7 @@ const {record,readme}=Astro.props
 ---
 <Base title={record.Name}>
 <div class="text-center space-y-2">
-    <h1 class="text-5xl font-bold">{record.Name}</h1>
+    <h1 class="text-5xl lg:text-6xl font-black">{record.Name}</h1>
     <p>by <span>{record.Author}</span></p>
     <p class="flex gap-4 place-content-center">
         {['GitHub', 'npm', 'Live Preview'].map(e => record[e] && <a href={record[e]} class="font-bold text-primary">{e}</a>)}
