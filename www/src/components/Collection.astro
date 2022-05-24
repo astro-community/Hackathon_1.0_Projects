@@ -5,8 +5,8 @@ export interface Props {
 
 const { title } = Astro.props as Props;
 ---
-<div class="container mx-auto px-3 space-y-8">
-  <h2 class="font-black text-4xl lg:text-6xl">{title}</h2>
+<div class="container mx-auto px-3 space-y-8 lg:space-y-16 lg:pt-8">
+  <h2 class="font-black dark:text-primary-content text-4xl lg:text-6xl text-center">{title}</h2>
   <div class="grid gap-6 gap-y-3 sm:gap-y-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     <slot/>
   </div>
