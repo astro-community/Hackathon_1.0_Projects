@@ -1,8 +1,7 @@
 ---
 import notionData from '../data/notion.json'
 import Base from '../layouts/Base.astro';
-import capitalizeWords from '../scripts/capitialiseWords';
-import formatCategoryString from '../scripts/formatCategoryString';
+import { prettyCategoryName } from '../scripts/prettyCategoryName';
 
 const countCategory = (category: string) => notionData.filter(i => i.Category.toLowerCase().includes(category)).length;
 const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category => [category, countCategory(category)]);
@@ -13,7 +12,7 @@ const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category 
 		{counts.map(([name, count]) =>
 		<div class="card p-4 space-y-4 shadow-xl bg-base-100">
 			<div class="flex justify-between items-baseline">
-				<h2 class="font-bold text-xl lg:text-2xl">{name !== 'ssr' ? `${capitalizeWords(name)}s`: name.toUpperCase()}</h2>
+				<h2 class="font-bold text-xl lg:text-2xl">{prettyCategoryName(name)}</h2>
 				<p class="text-sm lg:text-base"><span class="font-bold">{count}</span> Submissions</p>
 			</div>
 			<a href={`/${name}`} class="btn">View Entries</a>

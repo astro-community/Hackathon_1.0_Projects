@@ -4,6 +4,7 @@ import Collection from '../../components/Collection.astro';
 import NotionData from '../../data/notion.json'
 import Base from '../../layouts/Base.astro';
 import formatCategoryString from '../../scripts/formatCategoryString';
+import { prettyCategoryName } from '../../scripts/prettyCategoryName';
 
 export async function getStaticPaths() {
     return NotionData.map(record => {
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 ---
 <Base>
-	<Collection title={`${(category.toUpperCase())}`}>
+	<Collection title={prettyCategoryName(category)}>
 		{NotionData.filter(item=>item.Category.toLowerCase().includes(category)).map(data=><Card {data}/>)}
 	</Collection>
     <div class="container text-center mx-auto">
