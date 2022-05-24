@@ -8,12 +8,30 @@ export interface Props {
 
 const { title } = Astro.props as Props;
 const siteName = 'Astro Hackathon Showcase'
+const ogImageSrc = `https://v1.screenshot.11ty.dev/${encodeURIComponent(Astro.canonicalURL.href)}/opengraph/_${Date.now()}/`;
+const ogImageAlt = `Screenshot of “${title}” page on ${siteName}`;
 ---
 <html lang="en" class="h-full bg-base-200 bg-gradient-to-br from-base-200 to-base-300 bg-fixed">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>{title} 🚀 {siteName}</title>
+		
+		<link rel="canonical" href={Astro.canonicalURL.href}>
+		
+		<meta property="og:title" content={title ?? siteName} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={Astro.canonicalURL.href} />
+		<meta property="og:locale" content="en" />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:image" content={ogImageSrc} />
+		<meta property="og:image:alt" content={ogImageAlt} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="aFuzzyBear2" />
+		<meta property="twitter:title" content={title ?? siteName} />
+		<meta name="twitter:image" content={ogImageSrc} />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
 	</head>
 	<body class="space-y-12 pt-6 pb-24 lg:pt-12">
     <header class="container mx-auto px-3 text-center text-2xl lg:text-3xl lg:font-light">
