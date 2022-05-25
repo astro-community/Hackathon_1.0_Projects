@@ -79,6 +79,21 @@ const icons = {
             <div class="prose">
                 <h2>Category</h2>
                 <p>{prettyCategoryName(category)}</p>
+            {record['Extra links'] && (
+                <h2>Extra links</h2>
+                <ul>{record['Extra links']
+                    .split('\n')
+                    .map((line) => {
+                        const [heading, link] = line.split(' - ');
+                        return (
+                            <li>
+                                <strong>{heading}</strong><br>
+                                <a href={link}><span class="font-normal">{link.replace(/^https?:\/\//, '')}</span></a>
+                            </li>
+                        );
+                    })
+                }</ul>
+            )}
             {record.Description && (
                 <h2>Description</h2>
                 <Markdown content={record.Description} />
