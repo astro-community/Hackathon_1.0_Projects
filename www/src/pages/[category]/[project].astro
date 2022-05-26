@@ -85,6 +85,7 @@ const icons = {
                     .split('\n')
                     .map((line) => {
                         const [heading, link] = line.split(' - ');
+                        if (!link || !heading) return;
                         return (
                             <li>
                                 <strong>{heading}</strong><br>
