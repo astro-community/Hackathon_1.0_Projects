@@ -23,6 +23,9 @@ export async function getStaticPaths() {
 const {category,project}=Astro.params
 const {record}=Astro.props
 const readme = await fetchREADMEfromGithub(record.GitHub)
+if (!record['Live Preview']?.startsWith('http')) {
+  delete record['Live Preview'];
+}
 const preview = record['Live Preview'];
 
 const icons = {
