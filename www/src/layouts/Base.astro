@@ -1,5 +1,6 @@
 ---
 import AstroLogo from '../components/AstroLogo.astro';
+import { screenshotUrl } from '../scripts/screenshotAPI';
 import '../styles/base.css';
 
 export interface Props {
@@ -8,7 +9,7 @@ export interface Props {
 
 const { title } = Astro.props as Props;
 const siteName = 'Astro Hackathon Showcase'
-const ogImageSrc = `https://v1.screenshot.11ty.dev/${encodeURIComponent(Astro.canonicalURL.href)}/opengraph/_${Date.now()}/`;
+const ogImageSrc = screenshotUrl(Astro.canonicalURL.href);
 const ogImageAlt = `Screenshot of “${title}” page on ${siteName}`;
 ---
 <html lang="en" class="h-full bg-base-200 bg-gradient-to-br from-base-200 to-base-300 bg-fixed">
