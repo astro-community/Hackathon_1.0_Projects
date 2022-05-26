@@ -6,6 +6,7 @@ import formatCategoryString from '../../scripts/formatCategoryString';
 import fetchREADMEfromGithub from '../../scripts/fetchREADMEfromGithub';
 import { slugify } from '../../scripts/slugify';
 import { prettyCategoryName } from '../../scripts/prettyCategoryName';
+import { screenshotUrl } from '../../scripts/screenshotAPI';
 
 export async function getStaticPaths() {
      return NotionData.map((record)=>{
@@ -22,6 +23,7 @@ export async function getStaticPaths() {
 const {category,project}=Astro.params
 const {record}=Astro.props
 const readme = await fetchREADMEfromGithub(record.GitHub)
+const preview = record['Live Preview'];
 
 const icons = {
     GitHub: `<svg
@@ -64,7 +66,7 @@ const icons = {
 </div>
 <div class="container max-w-7xl mx-auto px-3 space-y-12 lg:space-y-0 lg:grid lg:gap-8 lg:grid-cols-3">
     <div class="lg:col-span-2">
-        <div class="mockup-window mx-auto border border-primary bg-primary">
+        <div class="mockup-window shadow-xl mx-auto border border-primary bg-primary">
             <div class="p-4 bg-base-100 text-base-content">
                 <a class="absolute w-full top-3.5 left-1/2 -translate-x-1/2 font-bold no-underline text-center" href={record.GitHub + '#readme'}>
                     <h3 class="text-sm text-primary-content">README.md</h3>
@@ -76,6 +78,15 @@ const icons = {
         </div>
     </div>
     <div class="space-y-8">
+            {preview && <div class="grid aspect-og">
+                <img src={screenshotUrl(preview)} alt="" class="col-start-1 row-start-1 rounded-2xl">
+                <a
+                    href={preview}
+                    class="p-3 shadow-md rounded-2xl col-start-1 row-start-1 grid w-full h-full place-content-end hover:bg-gradient-to-tl hover:from-primary/20 hover:to-secondary/20"
+                >
+                    <span class="badge badge-primary badge-lg"><Fragment set:html={icons['Live Preview']} /> Live Preview</span>
+                </a>
+            </div>}
             <div class="prose mx-auto">
                 <h2>Category</h2>
                 <p>{prettyCategoryName(category)}</p>
