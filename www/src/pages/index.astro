@@ -1,4 +1,5 @@
 ---
+import Countdown from '../components/Countdown.astro';
 import notionData from '../data/notion.json'
 import Base from '../layouts/Base.astro';
 import { prettyCategoryName } from '../scripts/prettyCategoryName';
@@ -21,6 +22,7 @@ const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category 
 		<div class="card p-4 space-y-4 shadow-xl bg-primary text-primary-content bg-gradient-to-tl from-primary to-secondary sm:translate-y-16">
 			<div class="flex justify-between items-baseline">
 				<h2 class="font-bold text-xl lg:text-2xl">🗳️ Vote</h2>
+				<p class="text-sm lg:text-base"><Countdown /></p>
 			</div>
 			<a href="https://docs.google.com/forms/d/1vkUya-eT41GMBtAgxiWNpLEMw9lX_JX9VJ8NtK-sZao/" class="btn btn-accent">Cast your Vote</a>
 		</div>

@@ -1,0 +1,42 @@
+<countdown-timer target="2022-05-27T23:59:59.000Z"></countdown-timer>
+
+<script is:inline>
+class CountdownTimer extends HTMLElement {
+  updateTimer() {
+    this.secondsLeft = Math.round((this.target.getTime() - Date.now()) / 1000);
+    if (this.secondsLeft <= 0) {
+      this.timeDisplay.innerHTML = '';
+      this.textDisplay.innerHTML = 'Voting has closed';
+      return;
+    }
+    const secondsLeft = this.pad(this.secondsLeft % 60);
+    const minutesLeft = this.pad(Math.round(this.secondsLeft / 60) % 60);
+    const hoursLeft = Math.round(this.secondsLeft / 60 / 60) % 60;
+    this.timeDisplay.innerHTML = `${hoursLeft}:${minutesLeft}:${secondsLeft}`;
+  }
+
+  pad(number) {
+    return number.toString().padStart(2, '0');
+  }
+
+  startCountdown() {
+    this.updateTimer();
+    const counter = window.setInterval(() => {
+      this.updateTimer();
+      if (this.secondsLeft <= 0) window.clearInterval(counter);
+    }, 1000);
+  }
+
+  connectedCallback() {
+    this.target = new Date(this.getAttribute('target'));
+    this.innerHTML = `<span><span class="text">Closing in </span><span class="seconds-left font-mono"></span></span>`;
+    this.timeDisplay = this.querySelector('.seconds-left');
+    this.textDisplay = this.querySelector('.text');
+    this.startCountdown();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.customElements.define('countdown-timer', CountdownTimer);
+})
+</script>
