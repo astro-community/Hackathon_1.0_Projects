@@ -58,7 +58,8 @@ const icons = {
 
 ---
 <Base title={record.Name}>
-<div class="text-center space-y-2">
+<div class="text-center space-y-3">
+    <a href="." class="badge badge-lg badge-outline font-bold">{prettyCategoryName(category)}</a>
     <h1 class="text-5xl lg:text-6xl font-black dark:text-primary-content">{record.Name}</h1>
     <p>by <span>{record.Author}</span></p>
     <p class="flex gap-8 place-content-center">
@@ -89,8 +90,6 @@ const icons = {
                 </a>
             </div>}
             <div class="prose mx-auto">
-                <h2>Category</h2>
-                <p>{prettyCategoryName(category)}</p>
             {record['Extra links'] && (
                 <h2>Extra links</h2>
                 <ul>{record['Extra links']
