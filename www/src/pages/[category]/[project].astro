@@ -79,11 +79,11 @@ const icons = {
         </div>
     </div>
     <div class="space-y-8">
-            {preview && <div class="grid aspect-og">
+            {preview && <div class="grid aspect-og rounded-2xl bg-gradient-to-tl from-primary to-secondary">
                 <img src={screenshotUrl(preview)} alt="" class="col-start-1 row-start-1 rounded-2xl">
                 <a
                     href={preview}
-                    class="p-3 shadow-md rounded-2xl col-start-1 row-start-1 grid w-full h-full place-content-end hover:bg-gradient-to-tl hover:from-primary/20 hover:to-secondary/20"
+                    class="p-3 shadow-md rounded-2xl col-start-1 row-start-1 grid w-full h-full place-content-end hover:bg-gradient-to-tl hover:from-primary/50 hover:via-secondary/20 hover:to-secondary/0"
                 >
                     <span class="badge badge-primary badge-lg"><Fragment set:html={icons['Live Preview']} /> Live Preview</span>
                 </a>
