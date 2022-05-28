@@ -1,5 +1,4 @@
 ---
-import Countdown from '../components/Countdown.astro';
 import notionData from '../data/notion.json'
 import Base from '../layouts/Base.astro';
 import { prettyCategoryName } from '../scripts/prettyCategoryName';
@@ -9,7 +8,7 @@ const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category 
 ---
 
 <Base>
-	<div class="container max-w-4xl mx-auto p-3 grid sm:grid-cols-2 sm:pb-24 gap-6 lg:gap-12 2xl:gap-16">
+	<div class="container max-w-4xl mx-auto p-3 grid sm:grid-cols-2 sm:pb-16 gap-6 lg:gap-12 2xl:gap-16">
 		{counts.map(([name, count], index) =>
 		<div class={`card p-4 space-y-4 shadow-xl bg-base-100 ${index % 2 && 'sm:translate-y-16'}`}>
 			<div class="flex justify-between items-baseline">
@@ -19,19 +18,16 @@ const counts: [string, number][] = ['theme', 'integration', 'ssr'].map(category 
 			<a href={`/${name}`} class="btn">View Entries</a>
 		</div>
 		)}
-		<div class="card p-4 space-y-4 shadow-xl bg-primary text-primary-content bg-gradient-to-tl from-primary to-secondary sm:translate-y-16">
-			<div class="flex justify-between items-baseline">
-				<h2 class="font-bold text-xl lg:text-2xl">🗳️ Vote</h2>
-				<p class="text-sm lg:text-base"><Countdown /></p>
-			</div>
-			<a href="https://docs.google.com/forms/d/1vkUya-eT41GMBtAgxiWNpLEMw9lX_JX9VJ8NtK-sZao/" class="btn btn-accent">Cast your Vote</a>
-		</div>
+	</div>
+	<div class="mx-auto sm:max-w-xl sm:text-center rounded-2xl sm:bg-gradient-to-tl from-primary to-secondary sm:text-primary-content p-4 sm:shadow-xl">
+		<p><strong>🗳 Voting has now closed. Winners will be announced soon!</strong></p>
 	</div>
 	<div class="mx-auto sm:max-w-xl sm:card p-4 sm:shadow-xl sm:bg-base-100">
 		<div class="prose">
+			
 			<p>To celebrate the upcoming release of Astro v1.0, the first Astro Hackathon ran from 8 April to 16 May 2022 with public voting ending on 27 May.</p>
 			<p>We have seen a fantastic range of submissions entered from a vast range of talented developers. We truly thank them all for their effort and commend them for their labour.</p>
-			<p>We encourage you to take a look over all the submissions in each category for this year's Hackathon. Then, cast your ballot to help decide who should win a share of the $15,000 total up for grabs in prize money.</p>
+			<p>We encourage you to take a look over all the submissions in each category for this year's Hackathon. Winners of the $15,000 total up for grabs in prize money will be announced soon.</p>
 			<p>May the best Astronauts win, and the force be with you!</p>
 			<p>Find out more at <a href="https://astro.build/hack">astro.build/hack</a></p>
 		</div>
