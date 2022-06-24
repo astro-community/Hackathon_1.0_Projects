@@ -96,6 +96,9 @@ const icons = {
                 </a>
             </div>}
             <div class="prose mx-auto">
+            {record.mvp && (
+                <p><strong>Honourable mention:</strong> “{record.mvp}”</p>
+            )}
             {record['Extra links'] && (
                 <h2>Extra links</h2>
                 <ul>{record['Extra links']

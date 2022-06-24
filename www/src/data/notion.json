@@ -2,7 +2,7 @@
     {
       "Name": "astronotion",
       "Author": "Eka",
-      "mvp": true,
+      "mvp": "New Content on the Block",
       "trophy": "new-content",
       "Author Interview": "",
       "Category": "🎨 Theme",
@@ -84,7 +84,7 @@
     {
       "Name": "astro-i18next",
       "Author": "Yassine Doghri",
-      "mvp": "true",
+      "mvp": "Mister Worldwide",
       "trophy": "mister-worldwide",
       "Author Interview": "⁉ Not Sent",
       "Category": "🔌 Integration",
@@ -450,7 +450,7 @@
     {
       "Name": "y3llow",
       "Author": "Naomi Hauret",
-      "mvp": true,
+      "mvp": "XYZ",
       "trophy": "xyz",
       "Author Interview": "⁉ Not Sent",
       "Category": "📡 Best Use of SSR",
@@ -494,7 +494,7 @@
     {
       "Name": "poko-notion",
       "Author": "Marc Coët",
-      "mvp": true,
+      "mvp": "New Content on the Block",
       "trophy": "new-content",
       "Author Interview": "⁉ Not Sent",
       "Category": "🎨 Theme",
@@ -616,7 +616,7 @@
     {
       "Name": "astro-portal",
       "Author": "Fico",
-      "mvp": true,
+      "mvp": "Mad Scientist",
       "trophy": "mad-scientist",
       "Author Interview": "",
       "Category": "🔌 Integration",
@@ -658,7 +658,7 @@
     {
       "Name": "agnostic-astro",
       "Author": "Rob Levin",
-      "mvp": true,
+      "mvp": "Community MVP",
       "trophy": "community-mvp",
       "Author Interview": "⁉ Not Sent",
       "Category": "🎨 Theme",
