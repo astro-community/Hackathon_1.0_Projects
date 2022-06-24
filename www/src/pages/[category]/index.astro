@@ -19,7 +19,7 @@ const { category } = Astro.params;
 const title = prettyCategoryName(category);
 const projects = NotionData
     .filter(item => item.Category.toLowerCase().includes(category))
-    .sort(item => 'winner' in item ? -1 : 0);
+    .sort((a, b) => 'winner' in a ? -1 : 'winner' in b ? 1 : 'mvp' in a ? -1 : 'mvp' in b ? 1 : 0);
 ---
 
 <Base {title}>
