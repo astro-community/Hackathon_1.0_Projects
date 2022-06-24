@@ -31,6 +31,11 @@ import { slugify } from "../scripts/slugify";
                 ⭐️&nbsp;Winner&nbsp;⭐️
             </p>
         }
+        {data.mvp &&
+            <p class="absolute text-xs uppercase font-bold tracking-wider bottom-0 right-0 rotate-3 bg-gradient-to-br from-primary to-secondary text-primary-content p-1 rounded shadow-md">
+                🏆
+            </p>
+        }
     </div>
     <p class="project-author col-start-2 col-span-3 self-start px-3 pt-1 whitespace-nowrap text-ellipsis overflow-hidden">{data.Author}</p>
 </a>
