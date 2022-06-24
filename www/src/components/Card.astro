@@ -7,12 +7,30 @@ import { slugify } from "../scripts/slugify";
     const gitUser = data.GitHub.split('/')[3]
 
 ---
-<a class="card p-4 bg-base-100 shadow-xl grid grid-cols-4 grid-rows-2 text-center" href={`/${formatCategoryString(data.Category)}/${slugify(data.Name)}`}>
-    <h3 class="project-title text-lg font-bold col-start-2 col-span-3 self-end border-b border-primary px-3 pb-1 whitespace-nowrap text-ellipsis overflow-hidden">{capitalizeWords(data.Name.replaceAll('-',' '))}</h3>
-    <div class="avatar row-span-full place-self-center">
-        <div class="w-20 rounded-full">
-            <img loading='lazy' src={`https://github.com/${gitUser}.png`} alt={`${gitUser} github profile picture`} width="96" height="96">
+<a
+    href={`/${formatCategoryString(data.Category)}/${slugify(data.Name)}`}
+    class:list={[
+        "card p-4 bg-base-100 shadow-xl grid grid-cols-4 grid-rows-2 text-center",
+        data.winner && 'bg-gradient-to-tl from-primary to-secondary text-primary-content'
+    ]}
+>
+    <h3 class="project-title text-lg font-bold row-start-1 col-start-2 col-span-3 self-end border-b border-primary px-3 pb-1 whitespace-nowrap text-ellipsis overflow-hidden">{capitalizeWords(data.Name.replaceAll('-',' '))}</h3>
+    {data.winner &&
+        <div class="relative row-start-1 col-start-2 col-span-3">
         </div>
+    }
+    <div class="row-span-full place-self-center relative">
+        <div class="avatar">
+            <div class="w-20 rounded-full">
+                <img loading='lazy' src={`https://github.com/${gitUser}.png`} alt={`${gitUser} github profile picture`} width="96" height="96">
+            </div>
+        </div>
+        {data.winner &&
+            <img src={`/astros/200h/${data.trophy}.png`} class="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/4 w-14">
+            <p class="absolute text-xs uppercase font-bold tracking-wider bottom-0 left-1/2 -translate-x-1/2 rotate-3 bg-gradient-to-br from-primary to-secondary text-primary-content p-1 rounded shadow-md">
+                ⭐️&nbsp;Winner&nbsp;⭐️
+            </p>
+        }
     </div>
     <p class="project-author col-start-2 col-span-3 self-start px-3 pt-1 whitespace-nowrap text-ellipsis overflow-hidden">{data.Author}</p>
 </a>
