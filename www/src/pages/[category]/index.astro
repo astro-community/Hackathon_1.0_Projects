@@ -17,12 +17,16 @@ export async function getStaticPaths() {
 }
 const { category } = Astro.params;
 const title = prettyCategoryName(category);
+const projects = NotionData
+    .filter(item => item.Category.toLowerCase().includes(category))
+    .sort(item => 'winner' in item ? -1 : 0);
 ---
+
 <Base {title}>
-	<Collection {title}>
-		{NotionData.filter(item=>item.Category.toLowerCase().includes(category)).map(data=><Card {data}/>)}
-	</Collection>
-    <div class="container text-center mx-auto">
-        <a href="/" class="btn btn-lg">← See all categories</a>
-    </div>
+<Collection {title}>
+    {projects.map((data) => <Card {data} />)}
+</Collection>
+<div class="container text-center mx-auto">
+    <a href="/" class="btn btn-lg">← See all categories</a>
+</div>
 </Base>
