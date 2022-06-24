@@ -25,6 +25,7 @@ const {record}=Astro.props
 const readme = await fetchREADMEfromGithub(record.GitHub)
 if (!record['Live Preview']?.startsWith('http')) delete record['Live Preview'];
 const preview = record['Live Preview'];
+const winnerBadge = record.winner ? '⭐️ Category Winner ⭐️' : record.mvp ? 'Honourable Mention 🏆' : null;
 
 const icons = {
     GitHub: `<svg
@@ -59,7 +60,10 @@ const icons = {
 ---
 <Base title={record.Name}>
 <div class="text-center space-y-3">
-    <a href="." class="badge badge-lg badge-outline font-bold">{prettyCategoryName(category)}</a>
+    <p>
+        <a href="." class="badge badge-lg badge-outline font-bold">{prettyCategoryName(category)}</a>
+        {winnerBadge && <span class="badge badge-lg bg-gradient-to-tl from-primary to-secondary text-primary-content border-primary">{winnerBadge}</span>}
+    </p>
     <h1 class="text-5xl lg:text-6xl font-black dark:text-primary-content">{record.Name}</h1>
     <p>by <span>{record.Author}</span></p>
     <p class="flex gap-8 place-content-center">
