@@ -2,6 +2,8 @@
     {
       "Name": "astronotion",
       "Author": "Eka",
+      "mvp": true,
+      "trophy": "new-content",
       "Author Interview": "",
       "Category": "🎨 Theme",
       "Data Submitted": "May 16, 2022",
@@ -82,6 +84,8 @@
     {
       "Name": "astro-i18next",
       "Author": "Yassine Doghri",
+      "mvp": "true",
+      "trophy": "mister-worldwide",
       "Author Interview": "⁉ Not Sent",
       "Category": "🔌 Integration",
       "Data Submitted": "May 12, 2022",
@@ -302,6 +306,8 @@
     {
       "Name": "passle-courses",
       "Author": "Pascal Schilp",
+      "winner": true,
+      "trophy": "ssr",
       "Author Interview": "⁉ Not Sent",
       "Category": "📡 Best Use of SSR",
       "Data Submitted": "April 15, 2022",
@@ -342,6 +348,8 @@
     {
       "Name": "astro-snipcart (design system)",
       "Author": "Lloyd Atkinson",
+      "winner": true,
+      "trophy": "theme",
       "Author Interview": "⁉ Not Sent",
       "Category": "🎨 Theme",
       "Data Submitted": "May 16, 2022",
@@ -442,6 +450,8 @@
     {
       "Name": "y3llow",
       "Author": "Naomi Hauret",
+      "mvp": true,
+      "trophy": "xyz",
       "Author Interview": "⁉ Not Sent",
       "Category": "📡 Best Use of SSR",
       "Data Submitted": "May 16, 2022",
@@ -462,6 +472,8 @@
     {
       "Name": "astro-auth",
       "Author": "Osada Vidath",
+      "winner": true,
+      "trophy": "integration",
       "Author Interview": "⁉ Not Sent",
       "Category": "🔌 Integration",
       "Data Submitted": "May 14, 2022",
@@ -482,6 +494,8 @@
     {
       "Name": "poko-notion",
       "Author": "Marc Coët",
+      "mvp": true,
+      "trophy": "new-content",
       "Author Interview": "⁉ Not Sent",
       "Category": "🎨 Theme",
       "Data Submitted": "May 16, 2022",
@@ -602,6 +616,8 @@
     {
       "Name": "astro-portal",
       "Author": "Fico",
+      "mvp": true,
+      "trophy": "mad-scientist",
       "Author Interview": "",
       "Category": "🔌 Integration",
       "Data Submitted": "May 15, 2022",
@@ -642,6 +658,8 @@
     {
       "Name": "agnostic-astro",
       "Author": "Rob Levin",
+      "mvp": true,
+      "trophy": "community-mvp",
       "Author Interview": "⁉ Not Sent",
       "Category": "🎨 Theme",
       "Data Submitted": "May 4, 2022",
